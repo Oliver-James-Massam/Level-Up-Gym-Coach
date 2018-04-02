@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GymCoach.master.cs" Inherits="GymCoach.GymCoach" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Level Up Gym Coach</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <%--<link rel="stylesheet" href="css/fontawesome.min.css">--%>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.red.css">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <div class="page">
+                <!-- Main Navbar-->
+                <header class="header">
+                    <nav class="navbar">
+                        <div class="container-fluid">
+                            <div class="navbar-holder d-flex align-items-center justify-content-between">
+                                <!-- Navbar Header-->
+                                <div class="navbar-header">
+                                    <!-- Navbar Brand -->
+                                    <a href="index.html" class="navbar-brand">
+                                        <div class="brand-text brand-big">Level-Up Gym Coach</div>
+                                    </a>
+                                </div>
+                                <!-- Navbar Menu -->
+                                <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center"
+                                    <!-- Logout    -->
+                                    <li class="nav-item"><a href="login.html" class="nav-link logout">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+                <div class="page-content d-flex align-items-stretch">
+                    <!-- Side Navbar -->
+                    <nav class="side-navbar">
+                        <!-- Sidebar Navidation Menus-->
+                        <span class="heading">Main</span>
+                        <ul class="list-unstyled">
+                            <li class="active"><a href="index.html"><i class="fas fa-home"></i> Home </a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- Page Footer-->
+          <footer class="main-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-sm-6">
+                  <p>Student Number: 201472959</p>
+                </div>
+                <div class="col-sm-6 text-right">
+                  <p>Design by <a href="https://bootstrapious.com/admin-templates" class="external">Bootstrapious</a></p>
+                  <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
+    </form>
+    <!-- JavaScript files-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"> </script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.cookie.js"> </script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+</body>
+</html>
