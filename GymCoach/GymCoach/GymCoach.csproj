@@ -92,6 +92,21 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\PerformanceMeasure\BMI.cs" />
+    <Compile Include="Content\PerformanceMeasure\BodyFat.cs" />
+    <Compile Include="Content\UserCoaching\CoachingAgent.cs" />
+    <Compile Include="Content\GymRoutine\EquipmentType.cs" />
+    <Compile Include="Content\GymRoutine\Exercise.cs" />
+    <Compile Include="Content\PerformanceMeasure\ExerciseLog.cs" />
+    <Compile Include="Content\UserCoaching\Experience.cs" />
+    <Compile Include="Content\PerformanceMeasure\Measurements.cs" />
+    <Compile Include="Content\GymRoutine\MuscleGroup.cs" />
+    <Compile Include="Content\PerformanceMeasure\PerformanceMeasure.cs" />
+    <Compile Include="Content\GymRoutine\Routine.cs" />
+    <Compile Include="Content\UserCoaching\TrainingType.cs" />
+    <Compile Include="Content\UserCoaching\User.cs" />
+    <Compile Include="Content\PerformanceMeasure\VO2Max.cs" />
+    <Compile Include="Content\GymRoutine\Workout.cs" />
     <Compile Include="GymCoach.Master.cs">
       <DependentUpon>GymCoach.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
