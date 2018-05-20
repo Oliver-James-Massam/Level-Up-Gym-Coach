@@ -27,10 +27,10 @@ namespace GymCoach.Content.Agent
         private static List<Exercise> upperLegs;
 
         //Equipment
-        private static List<Exercise> barbell;
-        private static List<Exercise> dumbbell;
-        private static List<Exercise> body;
-        private static List<Exercise> machine;
+        private static List<List<Exercise>> barbell = new List<List<Exercise>>();
+        private static List<List<Exercise>> dumbbell = new List<List<Exercise>>();
+        private static List<List<Exercise>> body = new List<List<Exercise>>();
+        private static List<List<Exercise>> machine = new List<List<Exercise>>();
 
         //Database
         private static DataAccess db = new DataAccess();
@@ -196,39 +196,187 @@ namespace GymCoach.Content.Agent
             return back;
         }
 
-        public static List<Exercise> getBarbell()
+        public static List<List<Exercise>> getBarbell()
         {
-            if (barbell == null)
+            List<Exercise> tempPush = new List<Exercise>();
+            List<Exercise> tempPull = new List<Exercise>();
+            List<Exercise> tempUpperLeg = new List<Exercise>();
+            List<Exercise> tempLowerLeg = new List<Exercise>();
+
+            foreach(Exercise i in getPush())
             {
-                barbell = getCategory(TrainingType.BARBELL);
+                if((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPush.Add(i);
+                }
             }
+
+            foreach (Exercise i in getPull())
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPull.Add(i);
+                }
+            }
+
+            foreach (Exercise i in getUpperLegs())
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempUpperLeg.Add(i);
+                }
+            }
+
+            foreach (Exercise i in getLowerLegs())
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempLowerLeg.Add(i);
+                }
+            }
+            barbell.Add(tempPush);
+            barbell.Add(tempPull);
+            barbell.Add(tempUpperLeg);
+            barbell.Add(tempLowerLeg);
+            
             return barbell;
         }
 
-        public static List<Exercise> getDumbbell()
+        public static List<List<Exercise>> getDumbbell()
         {
-            if (dumbbell == null)
+            List<Exercise> tempPush = new List<Exercise>();
+            List<Exercise> tempPull = new List<Exercise>();
+            List<Exercise> tempUpperLeg = new List<Exercise>();
+            List<Exercise> tempLowerLeg = new List<Exercise>();
+
+            foreach (Exercise i in push)
             {
-                dumbbell = getCategory(TrainingType.DUMBBELL);
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPush.Add(i);
+                }
             }
+
+            foreach (Exercise i in pull)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPull.Add(i);
+                }
+            }
+
+            foreach (Exercise i in upperLegs)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempUpperLeg.Add(i);
+                }
+            }
+
+            foreach (Exercise i in lowerLegs)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempLowerLeg.Add(i);
+                }
+            }
+            dumbbell.Add(tempPush);
+            dumbbell.Add(tempPull);
+            dumbbell.Add(tempUpperLeg);
+            dumbbell.Add(tempLowerLeg);
+
             return dumbbell;
         }
 
-        public static List<Exercise> getBody()
+        public static List<List<Exercise>> getBody()
         {
-            if (body == null)
+            List<Exercise> tempPush = new List<Exercise>();
+            List<Exercise> tempPull = new List<Exercise>();
+            List<Exercise> tempUpperLeg = new List<Exercise>();
+            List<Exercise> tempLowerLeg = new List<Exercise>();
+
+            foreach (Exercise i in push)
             {
-                body = getCategory(TrainingType.BODY);
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPush.Add(i);
+                }
             }
-            return body;
+
+            foreach (Exercise i in pull)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPull.Add(i);
+                }
+            }
+
+            foreach (Exercise i in upperLegs)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempUpperLeg.Add(i);
+                }
+            }
+
+            foreach (Exercise i in lowerLegs)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempLowerLeg.Add(i);
+                }
+            }
+            body.Add(tempPush);
+            body.Add(tempPull);
+            body.Add(tempUpperLeg);
+            body.Add(tempLowerLeg);
+
+            return barbell;
         }
 
-        public static List<Exercise> getMachine()
+        public static List<List<Exercise>> getMachine()
         {
-            if (machine == null)
+            List<Exercise> tempPush = new List<Exercise>();
+            List<Exercise> tempPull = new List<Exercise>();
+            List<Exercise> tempUpperLeg = new List<Exercise>();
+            List<Exercise> tempLowerLeg = new List<Exercise>();
+
+            foreach (Exercise i in push)
             {
-                machine = getCategory(TrainingType.MACHINE);
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPush.Add(i);
+                }
             }
+
+            foreach (Exercise i in pull)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempPull.Add(i);
+                }
+            }
+
+            foreach (Exercise i in upperLegs)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempUpperLeg.Add(i);
+                }
+            }
+
+            foreach (Exercise i in lowerLegs)
+            {
+                if ((i.getEquipmentType()).Equals(TrainingType.BARBELL))
+                {
+                    tempLowerLeg.Add(i);
+                }
+            }
+            machine.Add(tempPush);
+            machine.Add(tempPull);
+            machine.Add(tempUpperLeg);
+            machine.Add(tempLowerLeg);
+
             return machine;
         }
     }

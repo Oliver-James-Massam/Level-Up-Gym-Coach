@@ -5,18 +5,13 @@ using System.Web;
 
 namespace GymCoach.Content.Agent
 {
-    public class AStarSearch
+    public static class AStarSearch
     {
-        private PriorityQueue<Node<Exercise>, int> openList;
-        private PriorityQueue<Node<Exercise>, int> closedList;
-        private Node<Exercise> tree;
+        private static PriorityQueue<Node<Exercise>, int> openList;
+        private static PriorityQueue<Node<Exercise>, int> closedList;
+        private static Node<Exercise> tree;
 
-        public AStarSearch()
-        {
-            this.tree = null;
-        }
-
-        public void searchTree()
+        public static void searchTree()
         {
             if(tree == null)
             {
@@ -24,25 +19,183 @@ namespace GymCoach.Content.Agent
             }
         }
 
-        public int calcHeuristic(int gn, int hn)
+        public static int calcHeuristic(int gn, int hn)
         {
             int fn = gn + hn;
             return fn;
         }
 
-        public void buildTree()
+        //build the tree to search
+        public static void buildTree()
         {
-            //Exercise exercise = TreeStructure.getBarbell();
+            List<Exercise> exercises = TreeStructure.getExercises();
+            List<Node<Exercise>> nextNodes = new List<Node<Exercise>>();
+
+            //Full body
+            tree = new Node<Exercise>(new List<Node<Exercise>>(), exercises[(int)EnumGroupLocation.FullBody]);
+            tree.addNext(new Node<Exercise>(new List<Node<Exercise>>(), exercises[(int)EnumGroupLocation.UpperBody]));
+            tree.addNext(new Node<Exercise>(new List<Node<Exercise>>(), exercises[(int)EnumGroupLocation.LowerBody]));
+            nextNodes = tree.getNext();
+
+            //Upper body
+            Node<Exercise> upperBody = nextNodes[0];
+            upperBody.addNext(new Node<Exercise>(new List<Node<Exercise>>(), exercises[(int)EnumGroupLocation.Push]));
+            upperBody.addNext(new Node<Exercise>(new List<Node<Exercise>>(), exercises[(int)EnumGroupLocation.Pull]));
+
+            //Lower body
+            Node<Exercise> lowerBody = nextNodes[1];
+            lowerBody.addNext(new Node<Exercise>(new List<Node<Exercise>>(), exercises[(int)EnumGroupLocation.UpperLeg]));
+            lowerBody.addNext(new Node<Exercise>(new List<Node<Exercise>>(), exercises[(int)EnumGroupLocation.LowerLeg]));
+
+            //Equipment and Exercises
+            Node<Exercise> barbell = new Node<Exercise>();
+            Node<Exercise> dumbbell = new Node<Exercise>();
+            Node<Exercise> body = new Node<Exercise>();
+            Node<Exercise> machine = new Node<Exercise>();
+
+            List<List<Exercise>> equipExercises = TreeStructure.getBarbell();
+            Node<Exercise> tempNode;
+            List<Exercise> tempExercises = new List<Exercise>();
+
+            //Push
+            nextNodes = upperBody.getNext();
+            Node<Exercise> push = nextNodes[0];
+            //Barbell
+            tempExercises = equipExercises[0];
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                barbell.addNext(tempNode);
+            }
+            //Dumbbell
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                dumbbell.addNext(tempNode);
+            }
+            //Body
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                body.addNext(tempNode);
+            }
+            //Machine
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                machine.addNext(tempNode);
+            }
+            push.addNext(barbell);
+            push.addNext(dumbbell);
+            push.addNext(body);
+            push.addNext(machine);
+
+            //Pull
+            Node<Exercise> pull = nextNodes[1];
+            //Barbell
+            tempExercises = equipExercises[1];
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                barbell.addNext(tempNode);
+            }
+            //Dumbbell
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                dumbbell.addNext(tempNode);
+            }
+            //Body
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                body.addNext(tempNode);
+            }
+            //Machine
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                machine.addNext(tempNode);
+            }
+            pull.addNext(barbell);
+            pull.addNext(dumbbell);
+            pull.addNext(body);
+            pull.addNext(machine);
+
+            //Upper leg
+            nextNodes = lowerBody.getNext();
+            Node<Exercise> upperLeg = nextNodes[0];
+            //Barbell
+            tempExercises = equipExercises[1];
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                barbell.addNext(tempNode);
+            }
+            //Dumbbell
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                dumbbell.addNext(tempNode);
+            }
+            //Body
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                body.addNext(tempNode);
+            }
+            //Machine
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                machine.addNext(tempNode);
+            }
+            upperLeg.addNext(barbell);
+            upperLeg.addNext(dumbbell);
+            upperLeg.addNext(body);
+            upperLeg.addNext(machine);
+
+            //Lower leg
+            Node<Exercise> lowerLeg = nextNodes[1];
+            //Barbell
+            tempExercises = equipExercises[1];
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                barbell.addNext(tempNode);
+            }
+            //Dumbbell
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                dumbbell.addNext(tempNode);
+            }
+            //Body
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                body.addNext(tempNode);
+            }
+            //Machine
+            foreach (Exercise i in tempExercises)
+            {
+                tempNode = new Node<Exercise>(new List<Node<Exercise>>(), i);
+                machine.addNext(tempNode);
+            }
+            lowerLeg.addNext(barbell);
+            lowerLeg.addNext(dumbbell);
+            lowerLeg.addNext(body);
+            lowerLeg.addNext(machine);
         }
 
-        public void setOpenList(PriorityQueue<Node<Exercise>, int> openList)
+        public static void setOpenList(PriorityQueue<Node<Exercise>, int> openlist)
         {
-            this.openList = openList;
+            openList = openlist;
         }
 
-        public PriorityQueue<Node<Exercise>, int> getOpenList()
+        public static PriorityQueue<Node<Exercise>, int> getOpenList()
         {
-            return this.openList;
+            return openList;
         }
     }
 }

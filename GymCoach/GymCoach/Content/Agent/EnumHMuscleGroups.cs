@@ -61,5 +61,15 @@ namespace GymCoach.Content.Agent
         /*Legs------------------------------------*/
     }
 
-
+    //Array Location for building tree
+    public enum EnumGroupLocation
+    {
+        FullBody = 0,                               
+        UpperBody = 1,                             
+        LowerBody = 2,                              
+        Push = 3,                                   
+        Pull = 4,                                   
+        UpperLeg = 5,                               
+        LowerLeg = 6
+    }
 }
