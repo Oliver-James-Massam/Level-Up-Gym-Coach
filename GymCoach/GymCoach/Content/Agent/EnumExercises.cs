@@ -31,7 +31,7 @@ namespace GymCoach.Content.Agent
     {
         Skullcrusher = 1,            /*https://wger.de/en/exercise/85/view/ */
         CloseGripBenchPress = 2,     /*https://wger.de/en/exercise/217/view/ */
-        Dip = 3,                     /*https://wger.de/en/exercise/122/view/ */
+        Dip = 3,                     /*https://wger.de/en/exercise/82/view/ */
         OHRopeExtension = 1,         /*https://wger.de/en/exercise/89/view/ */
         KickBack = 1                 /*https://wger.de/en/exercise/279/view/ */
     }
