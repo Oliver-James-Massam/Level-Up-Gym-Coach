@@ -59,10 +59,10 @@
                             <li class="active"><a href="index.html"><i class="fas fa-home"></i> Home </a></li>
                         </ul>
                     </nav>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
                 </div>
             </div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
             <!-- Page Footer-->
           <footer class="main-footer">
             <div class="container-fluid">

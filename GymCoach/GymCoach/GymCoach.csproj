@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -66,6 +69,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\GymDB.mdf" />
+    <Content Include="App_Data\GymDB_log.ldf">
+      <DependentUpon>GymDB.mdf</DependentUpon>
+    </Content>
     <Content Include="GymCoach.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -92,6 +99,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Content\Agent\AStarSearch.cs" />
+    <Compile Include="Content\Agent\EnumExercises.cs" />
+    <Compile Include="Content\Agent\EnumHDanger.cs" />
+    <Compile Include="Content\Agent\EnumHEquipment.cs" />
+    <Compile Include="Content\Agent\EnumHMuscleGroups.cs" />
+    <Compile Include="Content\Agent\Node.cs" />
+    <Compile Include="Content\Agent\PriorityQueue.cs" />
+    <Compile Include="Content\Agent\TreeStructure.cs" />
+    <Compile Include="Content\Database\DataAccess.cs" />
+    <Compile Include="Content\Database\GymDBHelper.cs" />
     <Compile Include="Content\PerformanceMeasure\BMI.cs" />
     <Compile Include="Content\PerformanceMeasure\BodyFat.cs" />
     <Compile Include="Content\UserCoaching\CoachingAgent.cs" />
